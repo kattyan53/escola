@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
+  <tr>
+    <td><%= @blog.user.name%></td>
+    <td><%= @blog.title %></td>
+    <td><%=@blog.content %></td>
+    <td><time datetime="<%= @blog.created_at %>">
+      <%= time_ago_in_words(@blog.created_at) %> ago
+    </time></td>
+  </tr>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

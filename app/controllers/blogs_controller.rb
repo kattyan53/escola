@@ -11,6 +11,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @user = User.find_by(id: @blog.user_id)
+    @blog = Blog.includes(:user).find(params[:id])
   end
 
   # GET /blogs/new
