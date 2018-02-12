@@ -6,6 +6,6 @@ class AddPostIdToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :career, :string
     add_column :users, :scout, :integer
     add_column :users, :recommended, :integer
-    add_column :users, :user_image, :string, default: 'people.jpeg'
+    add_column :users, :user_image, :string
   end
 end
