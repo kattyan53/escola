@@ -20,5 +20,17 @@
     </p>
   </tr>
 
+  <div>
+    <h4>コメント</h4>
+    <div id="comments_area"><!-- #① -->
+      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+      <%= render partial: 'comments/comment', locals: { comments: @comments } %>
+    </div>
+    <% if user_signed_in? %>
+      <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+      <%= render partial: 'comments/form', locals: { blog: @blog, comment: @comment } %>
+    <% end %>
+  </div>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
