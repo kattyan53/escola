@@ -1,11 +1,19 @@
 <p id="notice"><%= notice %></p>
   <tr>
+    <td>名前</td>
     <td><%= @blog.user.name%></td>
+    <td>タイトル</td>
     <td><%= @blog.title %></td>
+    <td>あらすじ</td>
     <td><%=@blog.content %></td>
-    <td><time datetime="<%= @blog.created_at %>">
-      <%= time_ago_in_words(@blog.created_at) %> ago
-    </time></td>
+    <td>内容</td>
+    <td><%=@blog.content2 %></td>
+    <td>投稿時間</td>
+    <td>
+      <time datetime="<%= @blog.created_at %>">
+        <%= time_ago_in_words(@blog.created_at) %> ago
+      </time>
+    </td>
   </tr>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
