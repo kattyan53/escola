@@ -21,6 +21,12 @@
     <%= form.label :content2 %>
     <%= form.text_field :content2 %>
 
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image, id: :image %>
+      <%= form.hidden_field :image_cache %>
+    </div>
+
     <%= form.submit %>
   </div>
 <% end %>

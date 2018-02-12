@@ -15,9 +15,16 @@
         <td><%= blog.user.name%></td>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
-        <td><time datetime="<%= blog.created_at %>">
-          <%= time_ago_in_words(blog.created_at) %> ago
-        </time></td>
+        <td>
+          <time datetime="<%= blog.created_at %>">
+           <%= time_ago_in_words(blog.created_at) %> 前
+          </time>
+        </td>
+        <% if blog.image.present? %>
+          <td><%= image_tag blog.image, :size => "200x150" %></td>
+        <% else %>
+          <td><%= image_tag 'noimage.png' , :size => "200x150" %></td>
+        <% end %>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
