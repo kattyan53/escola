@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <%= form_tag blogs_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
+
     <% if user_signed_in? %>
       <%= link_to "ブログ一覧", blogs_path %>
       <%= link_to "ユーザーページ", user_path(current_user.id) %>
