@@ -41,13 +41,10 @@ ActiveRecord::Schema.define(version: 20180211235657) do
     t.string "unconfirmed_email"
     t.boolean "admin", default: false
     t.boolean "mentor", default: false
-    t.string "user_name"
-    t.integer "post_id"
+    t.string "name"
     t.string "introduce"
     t.string "career"
-    t.integer "scout"
-    t.integer "recommended"
-    t.string "user_image"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

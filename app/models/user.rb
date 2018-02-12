@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   mount_uploader :user_image, ImageUploader
+
+  has_many :blogs
 end

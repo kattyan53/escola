@@ -12,6 +12,12 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= blog.user.name%></td>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><time datetime="<%= blog.created_at %>">
+          <%= time_ago_in_words(blog.created_at) %> ago
+        </time></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

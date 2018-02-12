@@ -1,8 +1,11 @@
 
-<h1>My page :<%= @user.user_name %></h1>
+<h1>My page :<%= @user.name %></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @user.user_image %>
+  <%= image_tag(@user.image_url) if @user.image.present? %>
 </p>
+
+  <%= @user.introduce %>
+  <%= @user.career %>
