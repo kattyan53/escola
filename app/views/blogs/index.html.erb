@@ -12,6 +12,9 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <% if blog.user.image.present? %>
+          <td><%= image_tag blog.user.image, :size => "48x48" %></td>
+        <% end %>
         <td><%= blog.user.name%></td>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>

@@ -5,11 +5,7 @@
 
 <p>画像</p>
 <p>
-  <% if @user.image.present? %>
-    <%= image_tag(@user.image_url) %>
-  <% else %>
-    <%= image_tag 'people.jpeg' %>
-  <% end %>
+  <%= image_tag(@user.image) %>
 </p>
 
 <p>自己紹介</p>
