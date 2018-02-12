@@ -3,9 +3,17 @@
 
 <p id="notice"><%= notice %></p>
 
+<p>画像</p>
 <p>
-  <%= image_tag(@user.image_url) if @user.image.present? %>
+  <% if @user.image.present? %>
+    <%= image_tag(@user.image_url) %>
+  <% else %>
+    <%= image_tag 'people.jpeg' %>
+  <% end %>
 </p>
 
+<p>自己紹介</p>
   <%= @user.introduce %>
+
+<p>経歴</p>
   <%= @user.career %>
