@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211125722) do
+ActiveRecord::Schema.define(version: 20180211235657) do
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20180211125722) do
     t.string "unconfirmed_email"
     t.boolean "admin", default: false
     t.boolean "mentor", default: false
+    t.string "user_name"
+    t.integer "post_id"
+    t.string "introduce"
+    t.string "career"
+    t.integer "scout"
+    t.integer "recommended"
+    t.string "user_image", default: "people.jpeg"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

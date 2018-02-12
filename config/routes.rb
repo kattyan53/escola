@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :blogs
 
   devise_for :users
+  resources :users, :only => [:index, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
