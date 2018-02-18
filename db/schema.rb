@@ -10,23 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212100255) do
+ActiveRecord::Schema.define(version: 20180218041210) do
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "content"
+    t.text "content2"
     t.integer "user_id"
     t.string "image"
-    t.string "name"
     t.datetime "created_at"
     t.datetime "update_at"
-    t.string "content2"
+  end
+
+  create_table "carrier_sheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.text "motivation"
+    t.text "strength"
+    t.text "experience"
+    t.datetime "created_at"
+    t.datetime "update_at"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
     t.integer "user_id"
     t.integer "blog_id"
+    t.datetime "created_at"
+    t.datetime "update_at"
+  end
+
+  create_table "nices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "blog_id"
+    t.datetime "created_at"
+    t.datetime "update_at"
+  end
+
+  create_table "scouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "scouter_user"
+    t.integer "scouted_user"
+    t.string "content"
+    t.string "title"
     t.datetime "created_at"
     t.datetime "update_at"
   end
@@ -42,21 +66,24 @@ ActiveRecord::Schema.define(version: 20180212100255) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "name"
+    t.string "introduce"
+    t.string "career"
+    t.string "image"
+    t.boolean "admin", default: false
+    t.string "users"
+    t.string "provider"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.boolean "admin", default: false
-    t.boolean "mentor", default: false
-    t.string "name"
-    t.string "introduce"
-    t.string "career"
-    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
 end
