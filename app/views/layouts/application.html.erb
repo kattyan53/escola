@@ -6,7 +6,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="css/reset.css">
   </head>
 
   <body>
@@ -22,14 +21,16 @@
     <% end %>
 
     <header class="header">
-      <h1>
-        <%= image_tag 'escola_logo.png' , class:"logo"%>
-      </h1>
+        <%= link_to "", tops_path, class:"logo"%>
       <nav class="global-nav">
         <ul>
-          <li class="nav-item active"><%= link_to "HOME", blogs_path %></li>
-          <li class="nav-item"><%= link_to '新規投稿', new_blog_path %></li>
+          <li class="nav-item">
+            <%= link_to '投稿一覧', blogs_path %>
+          </li>
             <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '新規投稿', new_blog_path %>
+              </li>
               <li class="nav-item">
                 <%= link_to "マイページ", user_path(current_user.id) %>
               </li>
