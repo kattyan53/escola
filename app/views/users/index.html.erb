@@ -8,3 +8,22 @@
     </li>
   <% end %>
 </ul>
+
+<% @blogs.each do |blog| %>
+<a href="#" class="article-box">
+  <h3 class="title"><%= blog.title %></h3>
+  <p class="desc"><%= blog.content %></p>
+  <p class="desc"><%= blog.user.name%></p>
+  <time class="date"><%= blog.created_at %></time>
+  <div class="image">
+  <% if blog.image.present? %>
+    <td><%= image_tag blog.image, :size => "315x210"%></td>
+  <% else %>
+    <td><%= image_tag 'noimage.png' , :size => "315x210" %></td>
+  <% end %>
+  </div>
+  <td><%= link_to 'Show', blog %></td>
+  <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+  <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</a>
+<% end %>

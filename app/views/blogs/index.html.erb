@@ -1,35 +1,139 @@
-<p id="notice"><%= notice %></p>
+<form class="search-box clearfix">
+  <%= form_tag blogs_path, :method => 'get' do %>
+      <%= submit_tag "Search", :name => nil , class:"search-button", value:"検索"%>
+      <%= text_field_tag :search, params[:search], class:"search-input", placeholder:"記事を検索"%>
+  <% end %>
+</form>
+  <div class="wrapper clearfix">
+    <main class="main">
+      <h2 class="hidden">HOT TOPIC</h2>
+      <a href="#" class="hot-topic clearfix">
+        <img class="image" src="./images/hot-topic.jpg" alt="コーディング画面">
+        <div class="content">
+          <h3 class="title">実務で使えるHTML/CSS<br>モダンコーディングTIPS</h3>
+          <p class="desc">Webフロントエンドの進化の勢いはとどまるところを知りません。新しい要素が増えて大幅に表現力が広がったHTML5/CSS3を活用して...</p>
+          <time class="date" datetime="2015-09-01">2015.09.01 TUE</time>
+        </div>
+      </a>
 
-<h1>Blogs</h1>
-
-<table>
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <% if blog.user.image.present? %>
-          <td><%= image_tag blog.user.image, :size => "48x48" %></td>
+      <h2 class="hidden">ARTICLES</h2>
+      <div class="clearfix">
+        <% @blogs.each do |blog| %>
+        <%= link_to blog, class: "article-box" do %>
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="desc"><%= blog.content %></p>
+          <p class="desc"><%= blog.user.name%></p>
+          <time class="date"><%= l blog.created_at , format: :short %></time>
+          <div class="image">
+          <% if blog.image.present? %>
+            <td><%= image_tag blog.image, :size => "315x210"%></td>
+          <% else %>
+            <td><%= image_tag 'noimage.png' , :size => "315x210" %></td>
+          <% end %>
+          </div>
         <% end %>
-        <td><%= blog.user.name%></td>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td>
-          <time datetime="<%= blog.created_at %>">
-           <%= time_ago_in_words(blog.created_at) %> 前
-          </time>
-        </td>
-        <% if blog.image.present? %>
-          <td><%= image_tag blog.image, :size => "200x150" %></td>
-        <% else %>
-          <td><%= image_tag 'noimage.png' , :size => "200x150" %></td>
         <% end %>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </main>
 
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
+    <div class="sidemenu">
+      <h2 class="heading">TODAY's RANKING</h2>
+      <ol class="ranking">
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+        <li class="ranking-item">
+          <a href="#">
+            <img class="image" src="./images/ranking.jpg" alt="グラフの画像">
+            <span class="order"></span>
+            <p class="text">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</p>
+          </a>
+        </li>
+      </ol>
+      <h2 class="heading">DOCUMENTS</h2>
+      <ul class="scroll-list">
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-08-23">2015.08.23 SUN</time>
+            <span class="category news">NEWS</span>
+            <span class="title">WORKSを更新しました。</span>
+          </a>
+        </li>
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-08-12">2015.08.12 WED</time>
+            <span class="category">TOPIC</span>
+            <span class="title">CSSでここまでできる！？ホントに使えるCSSセレクタ10選！</span>
+          </a>
+        </li>
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-08-04">2015.08.04 TUE</time>
+            <span class="category news">NEWS</span>
+            <span class="title">TOPICSを更新しました。</span>
+          </a>
+        </li>
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-07-25">2015.07.25 SAT</time>
+            <span class="category">TOPIC</span>
+            <span class="title">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</span>
+          </a>
+        </li>
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-07-09">2015.07.09 THU</time>
+            <span class="category">TOPIC</span>
+            <span class="title">HTML5の新しい属性で手軽にフォームバリデーション</span>
+          </a>
+        </li>
+        <li class="scroll-item">
+          <a href="#">
+            <time class="date" datetime="2015-06-30">2015.06.30 TUE</time>
+            <span class="category news">NEWS</span>
+            <span class="title">WORKSを更新しました。</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="documents">
+    </div>
+  </div>
