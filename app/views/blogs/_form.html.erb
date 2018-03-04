@@ -1,32 +1,38 @@
 <%= form_with(model: blog, local: true) do |form| %>
   <% if blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
-      <ul>
-      <% blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div class="alert alert-danger" role="alert">
+        <%= pluralize(blog.errors.count, "") %> 件のエラー:
+        <ul>
+        <% blog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-
-    <%= form.label :content2 %>
-    <%= form.text_field :content2 %>
-
-    <div class="field">
-      <%= form.label :image %>
-      <%= form.file_field :image, id: :image %>
+<div class="blog_post">
+  <ul>
+    <li >
+      <%= form.text_field :title, class:'blog_post title',
+        placeholder:'タイトルを入力'
+      %>
+    </li>
+    <li >
+      <%= form.text_area :content, class:'blog_post content',
+        placeholder:'今日は何を勉強しましたか？'
+      %>
+    </li>
+    <li>
+      <%= form.text_area :content2, class:'blog_post content2',
+        placeholder:'本日のまとめをお願いします！'
+      %>
+    </li>
+    <li>
+      <%= form.file_field :image, id: :image%>
       <%= form.hidden_field :image_cache %>
-    </div>
-
-    <%= form.submit %>
-  </div>
+      <div class="preview"/>
+    </li>
+      <%= form.submit :class=>"btn"%>
+  </ul>
+ <div>
 <% end %>

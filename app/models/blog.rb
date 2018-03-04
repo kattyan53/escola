@@ -13,4 +13,8 @@ class Blog < ApplicationRecord
       Blog.all
     end
   end
+
+  validates :title,    length: { minimum: 1 }       # 「1文字以上」
+  validates :title,    length: { maximum: 75 }      # 「75文字以下」
+  validates :title,    length: { in: 1..75 }        # 「1文字以上75文字以下」
 end
