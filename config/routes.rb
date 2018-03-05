@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+
+  resources :users do
+    member do
+      get :following, :followers
+      end
+    end
+  resources :relationships, only: [:create, :destroy]
 end
