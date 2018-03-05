@@ -1,36 +1,22 @@
-<p id="notice"><%= notice %></p>
-  <tr>
-    <p>名前</p>
-    <p><%= @blog.user.name%></p>
-    <p>タイトル</p>
-    <p><%= @blog.title %></p>
-    <p>あらすじ</p>
-    <p><%=@blog.content %></p>
-    <p>内容</p>
-    <p><%=@blog.content2 %></p>
-    <p>投稿時間</p>
-    <td>
-      <time datetime="<%= @blog.created_at %>">
-        <%= time_ago_in_words(@blog.created_at) %> ago
-      </time>
-    </td>
-    <p>
-      <strong>Image:</strong>
-      <%= image_tag @blog.image %>
-    </p>
-  </tr>
-
+<div class="blog_show">
   <div>
-    <h4>コメント</h4>
-    <div id="comments_area"><!-- #① -->
-      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-      <%= render partial: 'comments/comment', locals: { comments: @comments } %>
-    </div>
+    <h1><%= @blog.title %></h1>
+    <%= markdown(@blog.content).html_safe %>
+    <%= markdown(@blog.content2).html_safe %>
+    <time class="date",  align='right'><%= l @blog.created_at, format: :short%></time>
+    <p align:'right'><%= @blog.user.name%>さんの投稿</p>
+  </div>
+</div>
+
+<div class='blog_show_image'>
+  <%= image_tag @blog.image%>
+</div>
+
+<div id="comments_area">
+  <div>
+    <%= render partial: 'comments/comment', locals: { comments: @comments } %>
     <% if user_signed_in? %>
-      <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
       <%= render partial: 'comments/form', locals: { blog: @blog, comment: @comment } %>
     <% end %>
   </div>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+</div>

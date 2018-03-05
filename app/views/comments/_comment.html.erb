@@ -1,9 +1,24 @@
 <% comments.each do |comment| %>
-  <% unless comment.id.nil? %>
-    <p><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></p>
-    <p>コメント：<%= comment.content %></p>
-    <% if comment.user == current_user %>
-      <p><%= link_to 'コメントを削除する', blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true %></p>
-    <% end %>
-  <% end %>
+  <div class="balloon">
+    <ul>
+        <% unless comment.id.nil? %>
+        <div class="faceicon">
+        </div>
+      <div class="chatting">
+        <div class="says">
+          <li>
+            <p><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></p>
+            <br>
+            <p>コメント：<%= comment.content %></p>
+            <br>
+            <% if comment.user == current_user %>
+              <p><%= link_to '削除', blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true %>
+              <%= link_to '編集', blog_comment_path(comment.blog_id, comment.id), method: :edit, remote: true %></p>
+            <% end %>
+          </li>
+        <% end %>
+        </div>
+      </div>
+    </ul>
+  </div>
 <% end %>

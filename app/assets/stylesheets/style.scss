@@ -47,9 +47,8 @@
     }
     .heading {
       padding: 10px 12px;
-      background: url('../images/bg-slash.gif');
       letter-spacing: 1px;
-      font-size: 1.6rem;
+      font-size: 1rem;
     }
     .hidden {
       display: none;
@@ -282,6 +281,8 @@
     }
     .ranking .ranking-item {
       margin-top: 15px;
+      background-color: #97A69A;
+      border-radius: 10px 20px;
     }
     .ranking .ranking-item a {
       display: block;
@@ -294,82 +295,14 @@
     .ranking .image {
       width: 55px;
       height: 55px;
+      margin-right: 20px;
     }
-    /* .ranking .order {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      margin: 0 10px;
-      border: 1px solid #ccc;
-      color: #aaa;
-      vertical-align: 20px;
-      text-align: center;
-      font-weight: bold;
-      line-height: 16px;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    } */
-    /* .ranking .order::before {
-      content: counter(ranking);
-      display: inline-block;
-      counter-increment: ranking;
-      font-size: 1.0rem;
-      -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-    } */
-    .ranking .ranking-item:nth-of-type(1) .order,
-    .ranking .ranking-item:nth-of-type(2) .order,
-    .ranking .ranking-item:nth-of-type(3) .order {
-      border: none;
-      color: #fff;
-      font-weight: normal;
-      line-height: 18px;
-    }
-    .ranking .ranking-item:nth-of-type(1) .order {
-      background-color: #dab413;
-    }
-    .ranking .ranking-item:nth-of-type(2) .order {
-      background-color: #6e7b84;
-    }
-    .ranking .ranking-item:nth-of-type(3) .order {
-      background-color: #a0541a;
-    }
-
     .ranking .ranking-item {
       position: relative;
     }
-    .ranking .image {
-      margin-right: 20px;
-    }
-    .ranking .order {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      margin: 0 10px;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      background-color: #fff;
-      color: #aaa;
-      text-align: center;
-      font-weight: bold;
-      line-height: 18px;
-    }
-    .ranking .order::before {
-      content: counter(ranking);
-      counter-increment: ranking;
-      font-size: 1.0rem;
-    }
-    .ranking .ranking-item:nth-of-type(1) .order,
-    .ranking .ranking-item:nth-of-type(2) .order,
-    .ranking .ranking-item:nth-of-type(3) .order {
-      line-height: 20px;
-    }
-
     .ranking .text {
       display: inline-block;
-      width: 180px;
+      width: 250px;
       color: #000;
       vertical-align: top;
       font-size: 1.2rem;
@@ -644,12 +577,12 @@
   text-align: center;
   padding-bottom: 15px;
   letter-spacing: 2px;
-  font-size: 4rem;
+  font-size: 2rem;
   color: white;
 }
 
 /* --------------------------------
- * blog-new page
+ * blog-new,edit page
  * -------------------------------- */
 .blog_post {
   ul{
@@ -706,7 +639,86 @@
      background: #B8FBD7;
      box-shadow: 0px 0px 0px 5px #B8FBD7;
  }
-
+/* --------------------------------
+ * blog-show page
+ * -------------------------------- */
+.blog_show{
+  margin: 20px auto;
+  width: 970px;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  div{
+    margin: 100px 100px;
+  }
+}
+.blog_show_image{
+  width: 970px;
+  height: 485px;
+  margin: 10px auto;
+  img{
+    width: 970px;
+    height: auto;
+    margin: 10px auto;
+  }
+}
+/* --------------------------------
+ * comments area
+ * -------------------------------- */
+#comments_area{
+  width: 970px;
+  height: 100%;
+  margin: 200px 230px;
+  display: inline-grid;
+}
+.comment_box{
+  width: 300px;
+  height: 100px;
+}
+.balloon {
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.balloon .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+.balloon .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.balloon .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -ms-transform: rotate(35deg);
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
 /* --------------------------------
  * footer
  * -------------------------------- */
