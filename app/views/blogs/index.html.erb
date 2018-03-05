@@ -1,10 +1,4 @@
-<form class="search-box clearfix">
-  <%= form_tag blogs_path, :method => 'get' do %>
-      <%= submit_tag "Search", :name => nil , class:"search-button", value:"検索"%>
-      <%= text_field_tag :search, params[:search], class:"search-input", placeholder:"記事を検索"%>
-  <% end %>
-</form>
-  <div class="wrapper clearfix">
+<div class="wrapper clearfix">
     <main class="main">
       <a href="#" class="hot-topic clearfix">
         <img class="image" src="./images/hot-topic.jpg" alt="コーディング画面">
@@ -66,6 +60,20 @@
           </a>
         </li>
       </ol>
-
+      <div class="search">
+        <%= search_form_for @search do |f| %>
+          <%= f.label :title_cont, 'タイトル' %>
+          <%= f.text_field :title_cont %>
+          <br />
+        <%= f.label :created_at, '作成日' %>
+        <%= f.date_select :created_at_gteq, include_blank: true %>〜
+        <%= f.date_select :created_at_lteq, include_blank: true %>
+        <%= f.label :user, 'ユーザー' %>
+        <%= f.text_field :user_name_cont %>
+          <div>
+            <%= f.submit '検索する' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
