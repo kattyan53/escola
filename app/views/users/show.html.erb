@@ -13,3 +13,14 @@
 
 <p>経歴</p>
   <%= @user.career %>
+
+  <div class="contents">
+    <% unless @favorite == nil %>
+        <% @favorite.each do |favo| %>
+          <div class="tweets">
+          <p><%= favo.blog.title %></p>
+          </div>
+        <% end %>
+    <% end %>
+    </div>
+  </div>

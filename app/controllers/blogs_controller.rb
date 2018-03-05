@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
     @blog = Blog.includes(:user).find(params[:id])
     @comment = Comment.new
     @comments = @blog.comments
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def new
