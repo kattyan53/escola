@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   def index
     @search = Blog.ransack(params[:q])
     @blogs = @search.result
+    @blogs = Blog.page(params[:page]).per(10)
   end
 
   def show

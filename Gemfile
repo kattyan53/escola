@@ -49,6 +49,8 @@ gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 gem 'rails-i18n'
 gem 'ransack'
+gem "jquery-turbolinks"
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
