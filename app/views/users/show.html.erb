@@ -5,7 +5,9 @@
 
 <p>画像</p>
 <p>
-  <%= image_tag(@user.image) %>
+  <% unless @user.image != nil %>
+  <%= image_tag(current_user.image) %>
+  <% end %>
 </p>
 
 <p>自己紹介</p>
@@ -27,3 +29,6 @@
 
   <%= render 'follow_form' %>
   <%= render 'stats' %>
+
+<%= link_to "パスワード更新", edit_user_registration_path %>
+<%= link_to "ユーザー情報更新", user_profile_user_path %>

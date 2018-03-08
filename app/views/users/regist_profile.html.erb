@@ -1,0 +1,20 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <h1>自己紹介</h1>
+  <%= form.text_area :introduce %>
+  <h1>経歴</h1>
+  <%= form.text_area :career %>
+  <h1>名前</h1>
+  <%= form.text_area :name %>
+
+  <%= image_tag current_user.image %>
+  <h1>プロフィール画像</h1>
+  <%= form.label :image %>
+  <%= form.file_field :image%>
+
+  <%= select_tag 'user[yser_of_experience]', options_for_select(["0", "1", "2", "3"]) %>
+
+  <%= select_tag 'user[language]', options_for_select(["Ruby", "Java", "HTML/CSS", "Javascript"]) %>
+  <%= form.submit :class=>"btn", :value=>"投稿する" %>
+<% end %>
+
+<%= image_tag current_user.image %>

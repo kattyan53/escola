@@ -33,13 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# for login
 gem 'devise'
-# for debug
 gem 'pry-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.2.0'
 gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
 gem 'mini_magick'

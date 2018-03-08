@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get 'user_profile', to: 'users#regist_profile'
       end
     end
   resources :relationships, only: [:create, :destroy]
-end
+
+  end

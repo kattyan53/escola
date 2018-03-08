@@ -6,7 +6,6 @@
     def show
       @user = User.find(params[:id])
       @favorite = @user.favorites
-      @nice = current_user.favorites.find_by(user_id: @user.id)
     end
 
     def edit
@@ -16,7 +15,7 @@
    def update
      @user = User.find(params[:id])
      if @user.update(user_params)
-       redirect_to user_show_path(@user)
+       redirect_to user_path(@user)
     else
       render :edit
     end
@@ -34,9 +33,14 @@
      render 'show_follower'
    end
 
+   def regist_profile
+     @user = User.find(params[:id])
+   end
+
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :profile, :image)
+      params.require(:user).permit(:name, :email, :profile, :image, :introduce,
+      :career, :yser_of_experience, :language)
     end
   end
