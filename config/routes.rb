@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :official_accounts, :only => [:index, :edit, :new]
+
   resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'blogs#index'#deviceはログイン後、デフォルトでroot_pathにリダイレクトされる

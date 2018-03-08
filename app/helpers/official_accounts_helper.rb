@@ -1,0 +1,2 @@
+module OfficialAccountsHelper
+end

@@ -32,3 +32,8 @@
 
 <%= link_to "パスワード更新", edit_user_registration_path %>
 <%= link_to "ユーザー情報更新", user_profile_user_path %>
+
+
+<% if @user.official_account == true %>
+    <%= link_to 'Show', official_accounts_path %>
+<% end %>

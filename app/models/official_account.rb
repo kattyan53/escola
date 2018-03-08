@@ -1,0 +1,2 @@
+class OfficialAccount < ApplicationRecord
+end
