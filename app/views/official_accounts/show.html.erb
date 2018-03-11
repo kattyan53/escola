@@ -1,0 +1,9 @@
+<div class="official_account_show">
+  <div>
+    <h1><%= @official_account.title %></h1>
+    <%= @official_account.content_top %>
+    <%= @official_account.content_middle %>
+    <time class="date",  align='right'><%= l @official_account.created_at, format: :short%></time>
+    <p align:'right'><%= @official_account%>さんの投稿</p>
+  </div>
+</div>

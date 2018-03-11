@@ -49,6 +49,7 @@ gem 'rails-i18n'
 gem 'ransack'
 gem "jquery-turbolinks"
 gem 'kaminari'
+gem 'webpacker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :official_accounts, :only => [:index, :edit, :new]
+  resources :official_accounts
 
   resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
