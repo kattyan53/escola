@@ -1,20 +1,14 @@
-
-<h1>My page :<%= @user.name %></h1>
-
-<p id="notice"><%= notice %></p>
-
-<p>画像</p>
-<p>
+<p class="user_image">
   <% unless @user.image != nil %>
   <%= image_tag(current_user.image) %>
   <% end %>
 </p>
+<h3><%= @user.name %></h3>
+<h2 class="heading">自己紹介</h2>
+<%= @user.introduce %>
 
-<p>自己紹介</p>
-  <%= @user.introduce %>
-
-<p>経歴</p>
-  <%= @user.career %>
+<h2 class="heading">経歴</h2>
+<%= @user.career %>
 
   <div class="contents">
     <% unless @favorite == nil %>
@@ -27,13 +21,8 @@
     </div>
   </div>
 
-  <%= render 'follow_form' %>
-  <%= render 'stats' %>
+<%= render 'follow_form' %>
+<%= render 'stats' %>
 
 <%= link_to "パスワード更新", edit_user_registration_path %>
 <%= link_to "ユーザー情報更新", user_profile_user_path %>
-
-
-<% if @user.official_account == true %>
-    <%= link_to 'Show', official_accounts_path %>
-<% end %>

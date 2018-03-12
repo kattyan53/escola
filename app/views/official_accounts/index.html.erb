@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Official Accounts Blog</h1>
+<h2 class="heading">Official Account's Events</h2>
 
-<div class="wrapper clearfix">
-    <main class="main">
-      <% @official_accounts.each do |official_account| %>
+<div class="official-wrapper clearfix">
+    <main class="official-main">
+    <% @official_accounts.each do |official_account| %>
       <%= link_to official_account, class: "hot-topic clearfix" do %>
         <div class="image">
         <% if official_account.image_top.present? %>
@@ -18,18 +18,7 @@
           <p class="desc"><%= official_account.content_top %></p>
           <time class="date"><%= l official_account.created_at , format: :short %></time>
         </div>
-    <% end %>
+      <% end %>
     <% end %>
     </main>
 </div>
-
-<table>
-  <tbody>
-    <% @official_accounts.each do |official_account| %>
-      <tr>
-        <td><%= link_to 'Edit', edit_official_account_path(official_account) %></td>
-        <td><%= link_to 'Destroy', official_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
