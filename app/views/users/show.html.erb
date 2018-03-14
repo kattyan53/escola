@@ -1,14 +1,35 @@
-<p class="user_image">
-  <% unless @user.image != nil %>
-  <%= image_tag(current_user.image) %>
-  <% end %>
-</p>
-<h3><%= @user.name %></h3>
-<h2 class="heading">自己紹介</h2>
-<%= @user.introduce %>
-
-<h2 class="heading">経歴</h2>
-<%= @user.career %>
+  <div class="container">
+    <ul class="row">
+      <li class="user col-md-6 col-md-offset-3">
+        <h3><%= @user.name %></h3>
+        <% if @user.image.present? %>
+          <%= image_tag current_user.image%>
+        <% else %>
+          <%= image_tag 'noimage.png'%>
+        <% end %>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <h2 class="heading">自己紹介</h2>
+        <h3><%= @user.introduce %></h3>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <h2 class="heading">経歴</h2>
+        <h3><%= @user.career %></h3>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <h2 class="heading">学習したい言語</h2>
+        <h3><%= @user.language %></h3>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <h2 class="heading">経験年数</h2>
+        <h3><%= @user.yser_of_experience %></h3>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <%= render 'follow_form' %>
+        <%= render 'stats' %>
+      </li>
+    </ul>
+  </div>
 
   <div class="contents">
     <% unless @favorite == nil %>
@@ -20,9 +41,6 @@
     <% end %>
     </div>
   </div>
-
-<%= render 'follow_form' %>
-<%= render 'stats' %>
 
 <%= link_to "パスワード更新", edit_user_registration_path %>
 <%= link_to "ユーザー情報更新", user_profile_user_path %>

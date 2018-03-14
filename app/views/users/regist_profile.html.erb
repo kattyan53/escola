@@ -1,20 +1,33 @@
 <%= form_with(model: @user, local: true) do |form| %>
-  <h1>自己紹介</h1>
-  <%= form.text_area :introduce %>
-  <h1>経歴</h1>
-  <%= form.text_area :career %>
-  <h1>名前</h1>
-  <%= form.text_area :name %>
-
-  <%= image_tag current_user.image %>
-  <h1>プロフィール画像</h1>
-  <%= form.label :image %>
-  <%= form.file_field :image%>
-
-  <%= select_tag 'user[yser_of_experience]', options_for_select(["0", "1", "2", "3"]) %>
-
-  <%= select_tag 'user[language]', options_for_select(["Ruby", "Java", "HTML/CSS", "Javascript"]) %>
-  <%= form.submit :class=>"btn", :value=>"投稿する" %>
+  <div class="container">
+    <ul class="row">
+      <li class="col-md-6 col-md-offset-3">
+        <h2 class="heading">名前</h2>
+        <p><%= form.text_field :name, size: "91" %></p>
+      </li>
+      <li class="col-md-6 col-md-offset-3">
+        <h2 class="heading">自己紹介</h2>
+        <%= form.text_area :introduce %>
+      </li>
+      <li class="col-md-6 col-md-offset-3">
+        <h2 class="heading">経歴</h2>
+        <%= form.text_area :career %>
+      </li>
+      <li class="user col-md-6 col-md-offset-3">
+        <%= image_tag current_user.image %>
+        <%= form.file_field :image%>
+      </li>
+      <li class=" col-md-6 col-md-offset-3">
+        <h2 class="heading">学習したい言語</h2>
+        <%= select_tag 'user[language]', options_for_select(["Ruby", "Java", "HTML/CSS", "Javascript"]), class:"form-control" %>
+      </li>
+      <li class="col-md-6 col-md-offset-3">
+        <h2 class="heading">経験年数</h2>
+        <%= select_tag 'user[yser_of_experience]', options_for_select(["半年未満", "半年", "1", "2"]), class:"form-control" %>
+      </li>
+      <li class="col-md-5 col-md-offset-3">
+        <%= form.submit :class=>"btn"%>
+      </li>
+    </ul>
+  </div>
 <% end %>
-
-<%= image_tag current_user.image %>

@@ -106,14 +106,9 @@
     /* --------------------------------
      * main
      * -------------------------------- */
-    .main {
-      display: block;
-      float: left;
-      width: 820px;
-    }
+
     .official-main {
       display: block;
-      width: 820px;
       margin: auto;
     }
     .hot-topic {
@@ -219,7 +214,7 @@
         padding: 0.5em 1em;
         margin: 2em 0;
         color: #FFF;
-        background: #b5d264;
+        background: #FFF;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
         border-radius: 9px;
         position: relative;
@@ -262,7 +257,7 @@
       display: block;
       width: 160px;
       padding: 4px;
-      background-color: #b5d264;
+      background-color: #FFF;
       color: #2d3d54;
       text-align: center;
       letter-spacing: 1px;
@@ -273,8 +268,22 @@
       position: absolute;
       top: 20px;
       left: 35px;
-      box-shadow: inset 0 0 20px 10px #b5d264;
+      box-shadow: inset 0 0 20px 10px #97A69A;
     }
+    /* --------------------------------
+     * user_page
+     * -------------------------------- */
+     .user {
+       white-space: pre ;
+       list-style-type: none;
+       text-align: center;
+     }
+     .user img{
+       object-fit: cover;
+       width: 200px;
+       height: 200px;
+       border-radius: 50%;
+     }
 
     /* --------------------------------
      * sidemenu
@@ -340,7 +349,6 @@
     .documents > li ul > li {
       margin-bottom: 15px;
       padding-left: 10px;
-      background: url('../images/arrow.gif') no-repeat left center;
     }
     .documents a:hover {
       text-decoration: underline;
@@ -624,30 +632,7 @@
   }
 
 }
-/* --------------------------------
- * button
- * -------------------------------- */
- .btn{
-     margin: 10px 10px 20px 250px;
-     text-decoration: none;
-     background: #3FAF73;
-     color: #FFF;
-     width: 100px;
-     height: 100px;
-     line-height: 90px;
-     border-radius: 50%;
-     text-align: center;
-     vertical-align: middle;
-     overflow: hidden;
-     box-shadow: 0px 0px 0px 5px #3FAF73;
-     border: dashed 1px #FFF;
-     transition: .4s;
- }
 
- .btn:hover{
-     background: #B8FBD7;
-     box-shadow: 0px 0px 0px 5px #B8FBD7;
- }
 /* --------------------------------
  * blog-show page
  * -------------------------------- */
@@ -764,4 +749,63 @@
   margin-top: 30px;
   text-align: center;
   letter-spacing: 1px;
+}
+
+/* --------------------------------
+ * blogs
+ * -------------------------------- */
+
+div.PhotoBox {
+   float: left;              /* A1 */
+   position: relative;       /* A2 */
+   overflow: hidden;         /* A3 */
+   margin: 0px 4em 4em 0px;/* A4:隣接画像との余白量 */
+   width: 300px;            /* A5:画像の横幅 */
+   height: 280px;           /* A6:画像の高さ */
+}
+
+div.PhotoBox div.SlideBox {
+   position: absolute;       /* B1 */
+   left: 0px;                /* B2 */
+   top: 200px;              /* B3:画像の高さに合わせる */
+   width: 300px;            /* B4:画像の横幅に合わせる */
+   height: 280px;            /* B5:スライドして重ねる領域の高さ */
+   background-color: black; /* B6:スライドして重ねる領域の背景色 */
+   color: white;            /* B7:スライドして重ねる領域の文字色 */
+   opacity: 0.7;            /* B8:スライドして重ねる領域の透明度 */
+}
+
+div.PhotoBox div.SlideBox p.Caption {
+   font-weight: bold; /* 文字の太さ */
+   font-size: 90%;    /* 文字サイズ */
+   margin: 0.5em;     /* 周囲の余白量 */
+}
+
+/* 詳細削除編集ボタンの位置 */
+li.Caption{
+   list-style:none;
+   float:left;
+   padding-top: 50px;
+   padding-left: 5px;
+}
+
+ul.Caption2 {
+   float:right;
+   right: 50%;
+}
+
+li.Caption2 {
+   list-style:none;
+   right:-50%;
+   padding-top: 0px;
+}
+
+.btn-circle {
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   padding: 6px 0;
+   font-size: 12px;
+   line-height: 1.428571429;
+   border-radius: 15px;
 }
