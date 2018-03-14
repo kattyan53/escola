@@ -106,9 +106,14 @@
     /* --------------------------------
      * main
      * -------------------------------- */
-
+    .main {
+      display: block;
+      float: left;
+      width: 820px;
+    }
     .official-main {
       display: block;
+      width: 820px;
       margin: auto;
     }
     .hot-topic {
@@ -632,7 +637,30 @@
   }
 
 }
+/* --------------------------------
+ * button
+ * -------------------------------- */
+ .btnn{
+     margin: 10px 10px 20px 250px;
+     text-decoration: none;
+     background: #3FAF73;
+     color: #FFF;
+     width: 100px;
+     height: 100px;
+     line-height: 90px;
+     border-radius: 50%;
+     text-align: center;
+     vertical-align: middle;
+     overflow: hidden;
+     box-shadow: 0px 0px 0px 5px #3FAF73;
+     border: dashed 1px #FFF;
+     transition: .4s;
+ }
 
+ .btnn:hover{
+     background: #B8FBD7;
+     box-shadow: 0px 0px 0px 5px #B8FBD7;
+ }
 /* --------------------------------
  * blog-show page
  * -------------------------------- */
@@ -808,4 +836,8 @@ li.Caption2 {
    font-size: 12px;
    line-height: 1.428571429;
    border-radius: 15px;
+}
+
+.row{
+  margin-left: 40px;
 }
