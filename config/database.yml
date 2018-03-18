@@ -16,6 +16,10 @@ test:
 
 production:
   <<: *default
+  adapter: mysql2
+  encoding: utf8
   database: escola_production
+  pool: 5
   username: root
-  password: <%= ENV['ESCOLA_DATABASE_PASSWORD'] %>
+  password: aaa
+  socket: /tmp/mysql.sock
