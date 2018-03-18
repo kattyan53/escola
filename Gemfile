@@ -49,7 +49,6 @@ gem 'rails-i18n'
 gem 'ransack'
 gem "jquery-turbolinks"
 gem 'kaminari'
-gem 'webpacker'
 gem 'bootstrap-will_paginate'
 
 group :development, :test do
