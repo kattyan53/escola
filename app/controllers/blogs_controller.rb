@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :new, :edit, :update, :destroy]
 
   def index
     @search = Blog.ransack(params[:q])
@@ -10,9 +10,9 @@ class BlogsController < ApplicationController
 
   def ensure_correct_user
     @blog = Blog.find_by(id:params[:id])
-    if @blog.user_id != @current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to("/blogs/index")
+    if @blog.user_id != current_user.id
+      flash[:notice] = "編集の権限がありません"
+      redirect_to("/")
     end
   end
 
