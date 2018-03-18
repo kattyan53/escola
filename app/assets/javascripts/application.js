@@ -11,14 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
 //= require_tree .
-
-window.addEventListener('load', () => {
-   document.getElementById('message').onsubmit = () => {
-       App.chat.put_message(document.getElementById('body').value);
-       return false;
-   }
-});
