@@ -11,7 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require bootstrap/dist/js/bootstrap.min
+//= require turbolinks
+//= require jquery/dist/jquery.js
 //= require_tree .
 
 window.addEventListener('load', () => {
