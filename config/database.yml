@@ -16,10 +16,8 @@ test:
 
 production:
   <<: *default
-  adapter: mysql2
-  encoding: utf8
-  database: escola_production
+  database: heroku_0c42c1dee736e30
   pool: 5
-  username: root
-  password: aaa
+  username: bfe2eff549076e
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /tmp/mysql.sock
