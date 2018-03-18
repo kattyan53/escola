@@ -1,0 +1,45 @@
+<% if @favorites.present? %>
+<article>
+  <div class="contents">
+    <ul class="row">
+    <% @favorites.each do |favo| %>
+    <%= link_to blog_path(favo.blog.id) do %>
+      <div class="PhotoBox" class="col-sm-6 col-md-3">
+         <% if favo.blog.image.present? %>
+           <td><%= image_tag(favo.blog.image_url) if favo.blog.image.present? %></td>
+         <% else %>
+           <td><%= image_tag 'noimage.png' , :size => "300x250" %></td>
+         <% end %>
+         <div class="SlideBox">
+            <p class="Caption"><%= favo.blog.content %></p>
+            <ul class="Caption2">
+            <li class="Caption2">name:<%= favo.blog.user.name%></li>
+            <li class="Caption2">
+              <time datetime="<%= favo.blog.created_at %>">
+              <%= l favo.blog.created_at , format: :short %>
+              </time>
+            </li>
+            </ul>
+            <% if current_user.present? %>
+              <% if favo.blog.user_id == current_user.id %>
+              <li class="Caption"><button type="button" class="btn btn-default btn-circle">
+                <%= link_to 'del', blog_path(favo.blog.id),method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></li>
+              <li class="Caption"><button type="button" type="button" class="btn btn-warning btn-circle">
+                <%= link_to 'Edit', edit_blog_path(favo.blog.id),data: { confirm: '本当に編集していいですか？' } %></button></li>
+              <% end %>
+            <% end %>
+         </div>
+      </div>
+    <% end %>
+    <% end %>
+    </ul>
+  </div>
+</article>
+
+<% else %>
+<table class="nothing">
+<tr>
+<td height="600">まだお気に入りしていません</td>
+</tr>
+</table>
+<%end%>

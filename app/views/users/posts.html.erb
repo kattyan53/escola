@@ -1,3 +1,4 @@
+<% if @blogs.present? %>
 <article>
   <div class="contents">
     <ul class="row">
@@ -36,3 +37,11 @@
 </article>
 
 <%= paginate @blogs %>
+
+<% else %>
+<table class="nothing">
+<tr>
+<td height="600">まだ投稿はありません。</td>
+</tr>
+</table>
+<%end%>

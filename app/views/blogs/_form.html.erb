@@ -1,38 +1,46 @@
-<%= form_with(model: blog, local: true) do |form| %>
-  <% if blog.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <%= pluralize(blog.errors.count, "") %> 件のエラー:
-        <ul>
-        <% blog.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-     </div>
-  <% end %>
+<% if blog.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <%= pluralize(blog.errors.count, "") %> 件のエラー:
+      <ul>
+      <% blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+   </div>
+<% end %>
 
-<div class="blog_post">
-  <ul>
-    <li >
-      <%= form.text_field :title, class:'blog_post title',
-        placeholder:'タイトルを入力'
-      %>
-    </li>
-    <li >
-      <%= form.text_area :content, class:'blog_post content',
-        placeholder:'マークダウン形式でも入力できます。'
-      %>
-    </li>
-    <li>
-      <%= form.text_area :content2, class:'blog_post content2',
-        placeholder:'本日のまとめをお願いします。'
-      %>
-    </li>
-    <li>
-      <%= form.file_field :image, id: :image%>
+<%= form_with(model: blog, local: true) do |form| %>
+<div class="container">
+  <div class="post-form">
+    <div class="post-form-backdrop closed"></div>
+    <div class="post-section editor-title">
+    </div>
+    <div class="post-section">
+      <div class="post-title">
+        <%= form.text_field :title, class:"post-input large", id:"post-title",
+          placeholder:'タイトルを入力'
+        %>
+      </div>
+      <div class="post-content">
+        <%= form.text_area :content, class:'post-input',
+          placeholder:'マークダウン形式でも入力できます。'
+        %>
+      </div>
+      <div class="post-content">
+        <%= form.text_area :content2, class:'post-input',
+          placeholder:'本日のまとめをお願いします。'
+        %>
+      </div>
+    </div>
+    <div class="post-section post-media">
+      <%= form.file_field :image, id: :image, class:"btn btn-primary" %>
       <%= form.hidden_field :image_cache %>
       <div class="preview"/>
-    </li>
-      <%= form.submit :class=>"btn" %>
-  </ul>
- <div>
+      </div>
+    </div>
+    <div class="post-section post-buttons">
+      <%= form.submit :class=>"btn btn-primary" %>
+    </div>
+  </div>
+</div>
 <% end %>

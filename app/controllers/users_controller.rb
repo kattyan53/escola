@@ -22,9 +22,9 @@
    end
 
    def following
-       @user  = User.find(params[:id])
-       @users = @user.followings
-       render 'show_follow'
+     @user  = User.find(params[:id])
+     @users = @user.followings
+     render 'show_follow'
    end
 
    def followers
@@ -35,6 +35,16 @@
 
    def regist_profile
      @user = User.find(params[:id])
+   end
+
+   def posts
+     @user = User.find(params[:id])
+     @blogs = @user.blogs.page(params[:page])
+   end
+
+   def favorites
+     @user = User.find(params[:id])
+     @favorites = @user.favorites
    end
 
     private

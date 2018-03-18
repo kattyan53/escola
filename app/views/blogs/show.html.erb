@@ -1,30 +1,47 @@
-<div class="blog_show">
-  <div>
-    <h1><%= @blog.title %></h1>
-    <%= markdown(@blog.content).html_safe %>
-    <%= markdown(@blog.content2).html_safe %>
-    <time class="date",  align='right'><%= l @blog.created_at, format: :short%></time>
-    <p align:'right'><%= @blog.user.name%>さんの投稿</p>
-  </div>
-</div>
-
-<div class='blog_show_image'>
-  <%= image_tag @blog.image%>
-</div>
-
-<div id="comments_area">
-  <div>
-    <%= render partial: 'comments/comment', locals: { comments: @comments } %>
-    <% if user_signed_in? %>
-      <%= render partial: 'comments/form', locals: { blog: @blog, comment: @comment } %>
-    <% end %>
-  </div>
-</div>
-
-<% unless @blog.user == current_user %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <h1><%= @blog.title %></h1>
+      <% unless @blog.user == current_user %>
+        <% if @favorite.present? %>
+          <%= link_to 'この記事のお気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to 'この記事をお気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+      <hr>
+      <p><span class="glyphicon glyphicon-time"></span> Posted on <%= l @blog.created_at, format: :short%></p>
+      <hr>
+      <p><%= markdown(@blog.content).html_safe %></p>
+      <p><%= markdown(@blog.content2).html_safe %></p>
+      <hr>
+      <figure>
+        <%= image_tag @blog.image, class:"img-responsive"%>
+      </figure>
+    </div>
+      <div>
+        <div id="comments_area", class="form-group">
+          <div>
+            <%= render partial: 'comments/comment', locals: { comments: @comments } %>
+            <% if user_signed_in? %>
+              <%= render partial: 'comments/form', locals: { blog: @blog, comment: @comment } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="media">
+        <a class="pull-left" href="#">
+          <% if @blog.user.image.present? %>
+            <%= image_tag current_user.image, class: "media-object", alt:"jofpin", :size => "40x40"%>
+          <% else %>
+            <%= image_tag 'noimage.png', class: "media-object", alt:"jofpin", :size => "40x40"%>
+          <% end %>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <small><%= @blog.user.name%>さんの投稿</small>
+          </h4>
+        </div>
+      </div>
+      <br>

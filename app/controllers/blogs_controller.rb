@@ -5,7 +5,15 @@ class BlogsController < ApplicationController
   def index
     @search = Blog.ransack(params[:q])
     @blogs = @search.result
-    @blogs = Blog.page(params[:page]).per(10)
+    @blogs = Blog.page(params[:page]).per(40)
+  end
+
+  def ensure_correct_user
+    @blog = Blog.find_by(id:params[:id])
+    if @blog.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/blogs/index")
+    end
   end
 
   def show
@@ -21,6 +29,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    ensure_correct_user
   end
 
   def create
@@ -51,6 +60,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    ensure_correct_user
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }

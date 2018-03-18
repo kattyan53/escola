@@ -50,6 +50,7 @@ gem 'ransack'
 gem "jquery-turbolinks"
 gem 'kaminari'
 gem 'webpacker'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

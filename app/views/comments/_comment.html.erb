@@ -3,17 +3,23 @@
     <ul>
         <% unless comment.id.nil? %>
         <div class="faceicon">
+          <a class="pull-left" href="#">
+            <% if @blog.user.image.present? %>
+              <%= image_tag current_user.image, class: "media-object", alt:"jofpin", :size => "40x40"%>
+            <% else %>
+              <%= image_tag 'noimage.png', class: "media-object", alt:"jofpin", :size => "40x40"%>
+            <% end %>
+          </a>
         </div>
       <div class="chatting">
         <div class="says">
           <li>
-            <p><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></p>
+            <p><%= link_to "#{comment.user.name}さん", user_path(comment.user.id), class:"text-dark" %></p>
             <br>
             <p>コメント：<%= comment.content %></p>
             <br>
             <% if comment.user == current_user %>
-              <p><%= link_to '削除', blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true %>
-              <%= link_to '編集', blog_comment_path(comment.blog_id, comment.id), method: :edit, remote: true %></p>
+              <%= link_to '削除', blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true%>
             <% end %>
           </li>
         <% end %>

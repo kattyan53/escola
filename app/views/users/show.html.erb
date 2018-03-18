@@ -1,46 +1,58 @@
-  <div class="container">
-    <ul class="row">
-      <li class="user col-md-6 col-md-offset-3">
-        <h3><%= @user.name %></h3>
-        <% if @user.image.present? %>
-          <%= image_tag current_user.image%>
-        <% else %>
-          <%= image_tag 'noimage.png'%>
-        <% end %>
-      </li>
-      <li class="user col-md-6 col-md-offset-3">
-        <h2 class="heading">自己紹介</h2>
-        <h3><%= @user.introduce %></h3>
-      </li>
-      <li class="user col-md-6 col-md-offset-3">
-        <h2 class="heading">経歴</h2>
-        <h3><%= @user.career %></h3>
-      </li>
-      <li class="user col-md-6 col-md-offset-3">
-        <h2 class="heading">学習したい言語</h2>
-        <h3><%= @user.language %></h3>
-      </li>
-      <li class="user col-md-6 col-md-offset-3">
-        <h2 class="heading">経験年数</h2>
-        <h3><%= @user.yser_of_experience %></h3>
-      </li>
-      <li class="user col-md-6 col-md-offset-3">
-        <%= render 'follow_form' %>
-        <%= render 'stats' %>
-      </li>
-    </ul>
-  </div>
-
-  <div class="contents">
-    <% unless @favorite == nil %>
-        <% @favorite.each do |favo| %>
-          <div class="tweets">
-          <p><%= favo.blog.title %></p>
+<div class="content-profile-page">
+   <div class="profile-user-page card">
+      <div class="img-user-profile">
+        <div class="user">
+            <% if @user.image.present? %>
+              <%= image_tag current_user.image, class: "avater", alt:"jofpin"%>
+            <% else %>
+              <%= image_tag 'noimage.png', class: "avater", alt:"jofpin", :size => "300x250"%>
+            <% end %>
+        </div>
+           </div>
+          <% if @user!=current_user %>
+            <%= render 'follow_form' %>
+          <% end %>
+          <div class="user-profile-data">
+            <h1><%= @user.name %></h1>
           </div>
-        <% end %>
-    <% end %>
+          <div class="description-profile"><%= @user.introduce %></div>
+          <div class="description-profile"><%= @user.language %>/<%= @user.yser_of_experience %></div>
+
+       <ul class="data-user">
+        <li>
+          <a href="<%= users_post_user_path(@user) %>">
+            <strong><%= @user.blogs.count %></strong>
+            <span>My Posts</span>
+          </a>
+        </li>
+        <li>
+          <% @user ||= current_user %>
+          <a href="<%= following_user_path(@user) %>">
+            <strong id="following" class="stat">
+              <%= @user.followings.count %>
+            </strong>
+            following
+          </a>
+        </li>
+        <li>
+          <a href="<%= followers_user_path(@user) %>">
+            <strong id="followers" class="stat">
+              <%= @user.followers.count %>
+            </strong>
+            followers
+          </a>
+        </li>
+        <li>
+          <a href="<%= users_favorite_user_path(@user) %>">
+                <strong class="tweets">
+                  <%= @user.favorites.count %>
+                </strong>
+            favorites
+          </a>
+        </li>
+       </ul>
+      </div>
     </div>
   </div>
-
-<%= link_to "パスワード更新", edit_user_registration_path %>
-<%= link_to "ユーザー情報更新", user_profile_user_path %>
+<%= link_to "パスワード更新", edit_user_registration_path, type:"button", class:"btn btn-secondary btn-lg"%>
+<%= link_to "ユーザー情報更新", user_profile_user_path, type:"button", class:"btn btn-secondary btn-lg" %>

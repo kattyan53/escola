@@ -1,4 +1,23 @@
-<%= form_with(model: [blog, comment]) do |form| %>
-  <%= form.text_area :content, class:"comment_box"%>
-  <%= form.submit "コメント"%>
-<% end %>
+<div class="balloon">
+  <ul>
+      <div class="faceicon">
+        <a class="pull-left" href="#">
+          <% if @blog.user.image.present? %>
+            <%= image_tag current_user.image, class: "media-object", alt:"jofpin", :size => "40x40"%>
+          <% else %>
+            <%= image_tag 'noimage.png', class: "media-object", alt:"jofpin", :size => "40x40"%>
+          <% end %>
+        </a>
+      </div>
+    <div class="chatting">
+      <div class="says col-md-8">
+        <li>
+          <%= form_with(model: [blog, comment]) do |form| %>
+            <%= form.text_area :content, class:"form-control", rows:"4"%>
+            <%= form.submit "コメント", class:"comment btn btn-primary"%>
+          <% end %>
+        </li>
+      </div>
+    </div>
+  </ul>
+</div>

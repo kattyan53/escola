@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :official_accounts
 
   resources :comments
@@ -24,8 +25,10 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       get 'user_profile', to: 'users#regist_profile'
-      end
+      get 'users_post', to: 'users#posts'
+      get 'users_favorite', to: 'users#favorites'
     end
+  end
   resources :relationships, only: [:create, :destroy]
 
   end
