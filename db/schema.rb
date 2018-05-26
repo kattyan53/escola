@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180308010907) do
 
-  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
     t.text "content"
     t.text "content2"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.datetime "update_at"
   end
 
-  create_table "carrier_sheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "carrier_sheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "user_id"
     t.text "motivation"
     t.text "strength"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.datetime "update_at"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "content"
     t.integer "user_id"
     t.integer "blog_id"
@@ -39,21 +39,21 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.datetime "update_at"
   end
 
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "user_id"
     t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "nices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "nices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "user_id"
     t.integer "blog_id"
     t.datetime "created_at"
     t.datetime "update_at"
   end
 
-  create_table "official_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "official_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
     t.text "content_top"
     t.text "content_middle"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.datetime "update_at"
   end
 
-  create_table "relationships", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "relationships", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "follower_id"
     t.integer "following_id"
     t.datetime "created_at", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
-  create_table "scouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "scouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer "scouter_user"
     t.integer "scouted_user"
     t.string "content"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180308010907) do
     t.datetime "update_at"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
